@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface SavedStore {
-  savedCount: any;
+  savedCount: number;
   savedIds: string[];
 
   toggleSaved: (

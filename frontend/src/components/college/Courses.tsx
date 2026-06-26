@@ -1,27 +1,34 @@
-import React from "react";
 import { BookOpen, Clock } from "lucide-react";
+import type { Course } from "@/types/college";
 
-export default function CoursesList({ courses = [] }) {
-    if (!courses.length) return null;
+interface Props {
+  courses?: Course[];
+}
 
-    return (
-        <div>
-            <h2 className="font-display text-2xl text-foreground mb-5">Courses offered</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
-                {courses.map((course, i) => (
-                    <div key={i} className="flex items-center gap-4 bg-card border border-border rounded-2xl p-4 hover:border-foreground/20 transition-colors">
-                        <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center shrink-0">
-                            <BookOpen className="w-5 h-5 text-accent-foreground" />
-                        </div>
-                        <div className="min-w-0">
-                            <p className="font-medium text-sm text-foreground truncate">{course.name}</p>
-                            <p className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
-                                <Clock className="w-3 h-3" /> {course.duration}
-                            </p>
-                        </div>
-                    </div>
-                ))}
+export default function Courses({ courses = [] }: Props) {
+  if (!courses.length) return null;
+
+  return (
+    <section className="mt-10">
+      <h2 className="mb-5 text-2xl font-semibold text-slate-950 dark:text-white">Courses offered</h2>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {courses.map((course, i) => (
+          <div
+            key={i}
+            className="surface flex items-center gap-4 rounded-2xl p-4 transition-colors hover:border-blue-300 dark:hover:border-blue-700"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-300">
+              <BookOpen className="h-5 w-5" />
             </div>
-        </div>
-    );
+            <div className="min-w-0">
+              <p className="truncate text-sm font-medium text-slate-950 dark:text-white">{course.name}</p>
+              <p className="mt-0.5 flex items-center gap-1 text-xs text-muted">
+                <Clock className="h-3 w-3" /> {course.duration}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }

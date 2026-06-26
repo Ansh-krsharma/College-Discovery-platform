@@ -86,7 +86,7 @@ export default function CollegeDetail() {
               </div>
               <div className="flex min-w-72 gap-2">
                 <CompareButton college={data} />
-                <SaveButton id={data.id} />
+                <SaveButton collegeId={data.id} />
               </div>
             </div>
           </div>

@@ -6,10 +6,11 @@ import ProtectedRoute from "../components/auth/ProtectedRoute";
 import Home from "../pages/Home";
 import Colleges from "../pages/Colleges";
 import CollegesDetail from "../pages/CollegesDetail";
-import Compare from "../pages/Compare";
+import Compare from "../pages/compare";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Saved from "../pages/Saved";
+import NotFound from "../pages/NotFound";
 
 export const router =
   createBrowserRouter([
@@ -67,5 +68,9 @@ export const router =
           <Saved />
         </ProtectedRoute>
       ),
+    },
+    {
+      path: "*",
+      element: <NotFound />,
     },
   ]);
